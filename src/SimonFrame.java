@@ -8,7 +8,8 @@ public class SimonFrame extends JFrame implements KeyListener {
     public static final int HEIGHT = 600;
 
     SimonMenuPanel _menuPanel = new SimonMenuPanel( this );
-    SimonGamePanel _gamePanel = new SimonGamePanel();
+    SimonGamePanel _gamePanel = new SimonGamePanel(this);
+    SimonEndPanel _endPanel = new SimonEndPanel(this);
     public CardLayout _layout = new CardLayout();
 
     public SimonFrame() {
@@ -16,6 +17,7 @@ public class SimonFrame extends JFrame implements KeyListener {
         setup();
         displayMenuPanel();
         displayGamePanel();
+        displayEndPanel();
     }
 
     private void setup() {
@@ -39,20 +41,21 @@ public class SimonFrame extends JFrame implements KeyListener {
     private void displayMenuPanel() {
        this.add( _menuPanel) ;
     }
+    private void displayEndPanel() { this.add(_endPanel); }
 
-    @Override
+
     public void keyTyped(KeyEvent e) {
 //        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 //            _layout.next(this);
 //        }
     }
 
-    @Override
+
     public void keyPressed(KeyEvent e) {
 
     }
 
-    @Override
+
     public void keyReleased(KeyEvent e) {
 
     }

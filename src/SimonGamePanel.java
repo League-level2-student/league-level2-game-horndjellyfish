@@ -2,14 +2,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.Random;
 
-public class SimonGamePanel extends JPanel implements ActionListener {
+public class SimonGamePanel extends JPanel implements ActionListener, KeyListener {
 
-    public final int GREEN = 1;
-    public final int BLUE = 2;
-    public final int RED = 3;
-    public final int YELLOW = 4;
-
+    public final int GREEN = 0;
+    public final int BLUE = 1;
+    public final int RED = 2;
+    public final int YELLOW = 3;
+    ArrayList<Integer> compPattern;
+    Random rand = new Random();
     public final int PANEL_SIZE = SimonFrame.HEIGHT;
     protected static final int BUTTON_WIDTH = SimonFrame.WIDTH/2;
     protected static final int BUTTON_HEIGHT = SimonFrame.HEIGHT/2;
@@ -18,7 +23,13 @@ public class SimonGamePanel extends JPanel implements ActionListener {
     SimonGPButton _redButton = new SimonRedButton();
     SimonGPButton _yellowButton = new SimonYellowButton();
     SimonGPButton _blueButton = new SimonBlueButton();
-
+    SimonFrame _parent = null;
+    SimonGamePanel (SimonFrame parent) {
+        _parent = parent;
+         compPattern = new ArrayList<Integer>();
+         int nextColor = rand.nextInt(YELLOW);
+         compPattern.add(nextColor);
+    }
     // paint the Game Panel
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -35,8 +46,22 @@ public class SimonGamePanel extends JPanel implements ActionListener {
     }
     Timer timer = new Timer(20, this);
 
-    @Override
+
     public void actionPerformed(ActionEvent e) {
+
+    }
+
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            _parent.switchCard();
+        }
+    }
+
+    public void keyReleased(KeyEvent e) {
 
     }
 }
