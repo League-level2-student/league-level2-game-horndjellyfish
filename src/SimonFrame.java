@@ -1,9 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 
-public class SimonFrame extends JFrame implements KeyListener {
+public class SimonFrame extends JFrame implements MouseListener, KeyListener {
     public static final int WIDTH = 600;
     public static final int HEIGHT = 600;
 
@@ -14,6 +13,8 @@ public class SimonFrame extends JFrame implements KeyListener {
 
     public SimonFrame() {
         super( "Simon Frame");
+
+
         setup();
         displayMenuPanel();
         displayGamePanel();
@@ -23,6 +24,8 @@ public class SimonFrame extends JFrame implements KeyListener {
     private void setup() {
         this.setLayout( _layout );
         this.addKeyListener( _menuPanel);
+        this.addMouseListener((MouseListener) this);
+
         //this.addKeyListener( this);
         setVisible(true);
         setSize(WIDTH, HEIGHT);
@@ -57,6 +60,29 @@ public class SimonFrame extends JFrame implements KeyListener {
 
 
     public void keyReleased(KeyEvent e) {
+
+    }
+
+
+    public void mouseClicked(MouseEvent e) {
+
+
+        
+    }
+
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    public void mouseExited(MouseEvent e) {
 
     }
 }

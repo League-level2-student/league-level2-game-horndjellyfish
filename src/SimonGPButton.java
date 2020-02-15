@@ -1,12 +1,16 @@
+import javax.swing.*;
 import java.awt.*;
 
-public class SimonGPButton {
+public class SimonGPButton  {
     //base class
     private final int WIDTH = SimonFrame.WIDTH / 2;
     private final int HEIGHT = SimonFrame.HEIGHT / 2;
 
     // save state of flash
     private boolean _flash = false;
+
+
+
 
     // paint the button
     public void paintComponent(Graphics g) {
