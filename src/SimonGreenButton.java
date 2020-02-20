@@ -2,9 +2,10 @@ import java.awt.*;
 
 public class SimonGreenButton extends SimonGPButton {
     //subclass
-
+	
     protected Color getColor() {
-        return( Color.GREEN.darker());
+    	System.out.println("GREEN");
+        return (Color.GREEN.darker());
     }
 
 

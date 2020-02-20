@@ -1,16 +1,13 @@
-import javax.swing.*;
 import java.awt.*;
 
-public class SimonGPButton  {
+public class SimonGPButton {
     //base class
     private final int WIDTH = SimonFrame.WIDTH / 2;
     private final int HEIGHT = SimonFrame.HEIGHT / 2;
 
+    
     // save state of flash
-    private boolean _flash = false;
-
-
-
+    public boolean _flash = false;
 
     // paint the button
     public void paintComponent(Graphics g) {
@@ -41,7 +38,7 @@ public class SimonGPButton  {
         _flash = false;
     }
 
-    // get Color to display on Button;  Regular vs Flash
+    // get Color to display on Button; Regular vs Flash
     private Color getDisplayColor() {
         Color clr = null;
         if (_flash) {
@@ -54,7 +51,8 @@ public class SimonGPButton  {
 
     // Get Button Color
     protected Color getColor() {
-        return Color.WHITE; //default, should overwrite in subclass
+    	
+        return Color.GREEN; //default, should overwrite in subclass
     }
 
     // Get Button Start X
@@ -68,7 +66,8 @@ public class SimonGPButton  {
     }
 
     // Get the Flash Color
-    private Color getFlashColor() {
+    public Color getFlashColor() {
+    	System.out.println("brighter green");
         return getColor().brighter();
     }
 }

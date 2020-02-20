@@ -10,17 +10,16 @@ public class SimonFrame extends JFrame implements MouseListener, KeyListener {
     SimonGamePanel _gamePanel = new SimonGamePanel(this);
     SimonEndPanel _endPanel = new SimonEndPanel(this);
     public CardLayout _layout = new CardLayout();
-
+    SimonGPButton simonButton = new SimonGPButton();
     public SimonFrame() {
         super( "Simon Frame");
-
-
         setup();
         displayMenuPanel();
         displayGamePanel();
         displayEndPanel();
     }
 
+    
     private void setup() {
         this.setLayout( _layout );
         this.addKeyListener( _menuPanel);
@@ -34,7 +33,7 @@ public class SimonFrame extends JFrame implements MouseListener, KeyListener {
     }
 
     public void switchCard() {
-        _layout.next( this.getContentPane());
+        _layout.next(this.getContentPane());
     }
 
     private void displayGamePanel() {
@@ -71,7 +70,8 @@ public class SimonFrame extends JFrame implements MouseListener, KeyListener {
     }
 
     public void mousePressed(MouseEvent e) {
-
+    	simonButton.startFlash();
+    	simonButton.getFlashColor();
     }
 
     public void mouseReleased(MouseEvent e) {

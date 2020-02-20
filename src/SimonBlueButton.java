@@ -3,6 +3,7 @@ import java.awt.*;
 public class SimonBlueButton extends SimonGPButton {
     //subclass
     protected Color getColor() {
+    	System.out.println("BLUE");
         return (Color.BLUE.darker());
     }
 

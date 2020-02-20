@@ -1,20 +1,18 @@
 import java.awt.*;
 
 public class SimonRedButton extends SimonGPButton {
-    //subclass
-    @Override
-    protected Color getColor() {
-        return( Color.RED.darker());
-    }
+	// subclass
 
-    @Override
-    protected int getX() {
-        return 300;
-    }
+	protected Color getColor() {
+		return (Color.RED.darker());
+	}
 
-    @Override
-    protected int getY() {
-        return 0;
-    }
+	protected int getX() {
+		return 300;
+	}
+
+	protected int getY() {
+		return 0;
+	}
 
 }
