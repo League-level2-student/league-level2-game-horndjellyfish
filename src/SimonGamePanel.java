@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class SimonGamePanel extends JPanel implements ActionListener, KeyListener {
 
@@ -20,6 +19,9 @@ public class SimonGamePanel extends JPanel implements ActionListener, KeyListene
     SimonGPButton _yellowButton = new SimonYellowButton();
     SimonGPButton _blueButton = new SimonBlueButton();
     SimonFrame _parent = null;
+    SimonGPButton simonButton = new SimonGPButton();
+    ArrayList<Integer> newPattern;
+    SimonPatternManager _patternManager = new SimonPatternManager(this);
     SimonGamePanel (SimonFrame parent) {
 
     }
@@ -33,13 +35,24 @@ public class SimonGamePanel extends JPanel implements ActionListener, KeyListene
 
         // paint the buttons
         _greenButton.paintComponent(g);
-
         _redButton.paintComponent(g);
         _yellowButton.paintComponent(g);
         _blueButton.paintComponent(g);
     }
-    Timer timer = new Timer(20, this);
+    Timer timer = new Timer(1000, this);
+    public void alsoStartGame() {
+        newPattern = _patternManager.startNewPattern();
+    }
+    public void flashPattern() {
+        for (int i : newPattern) {
+            timer.start();
+            if ( i == 0) {
+              _greenButton.startFlash();
+           }
+            // need to create a timer with a task to turn the flash off when the timer is up
 
+        }
+    }
 
     public void actionPerformed(ActionEvent e) {
 
@@ -51,7 +64,7 @@ public class SimonGamePanel extends JPanel implements ActionListener, KeyListene
 
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            _parent.switchCard();
+            _parent.startGame();
         }
     }
 

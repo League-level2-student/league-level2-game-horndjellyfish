@@ -52,7 +52,7 @@ public class SimonGPButton {
     // Get Button Color
     protected Color getColor() {
     	
-        return Color.GREEN; //default, should overwrite in subclass
+        return Color.WHITE; //default, should overwrite in subclass
     }
 
     // Get Button Start X

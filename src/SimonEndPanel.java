@@ -25,7 +25,7 @@ public class SimonEndPanel extends JPanel implements KeyListener {
 
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            _parent.switchCard();
+            _parent.startGame();
         }
     }
 

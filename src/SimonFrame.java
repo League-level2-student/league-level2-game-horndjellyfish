@@ -2,27 +2,28 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class SimonFrame extends JFrame implements MouseListener, KeyListener {
+public class SimonFrame extends JFrame implements MouseListener {
     public static final int WIDTH = 600;
     public static final int HEIGHT = 600;
 
-    SimonMenuPanel _menuPanel = new SimonMenuPanel( this );
+    SimonMenuPanel _menuPanel = new SimonMenuPanel(this);
     SimonGamePanel _gamePanel = new SimonGamePanel(this);
     SimonEndPanel _endPanel = new SimonEndPanel(this);
     public CardLayout _layout = new CardLayout();
     SimonGPButton simonButton = new SimonGPButton();
+
     public SimonFrame() {
-        super( "Simon Frame");
+        super("Simon Frame");
         setup();
         displayMenuPanel();
         displayGamePanel();
         displayEndPanel();
     }
 
-    
+
     private void setup() {
-        this.setLayout( _layout );
-        this.addKeyListener( _menuPanel);
+        this.setLayout(_layout);
+        this.addKeyListener(_menuPanel);
         this.addMouseListener((MouseListener) this);
 
         //this.addKeyListener( this);
@@ -32,46 +33,34 @@ public class SimonFrame extends JFrame implements MouseListener, KeyListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public void switchCard() {
+    public void startGame() {
         _layout.next(this.getContentPane());
+        _gamePanel.alsoStartGame();
     }
 
     private void displayGamePanel() {
-        this.add( _gamePanel) ;
+        //_gamePanel.addMouseListener(this);
+
+        this.add(_gamePanel);
     }
 
     private void displayMenuPanel() {
-       this.add( _menuPanel) ;
-    }
-    private void displayEndPanel() { this.add(_endPanel); }
-
-
-    public void keyTyped(KeyEvent e) {
-//        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-//            _layout.next(this);
-//        }
+        this.add(_menuPanel);
     }
 
-
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-
-    public void keyReleased(KeyEvent e) {
-
+    private void displayEndPanel() {
+        this.add(_endPanel);
     }
 
 
     public void mouseClicked(MouseEvent e) {
 
 
-        
     }
 
     public void mousePressed(MouseEvent e) {
-    	simonButton.startFlash();
-    	simonButton.getFlashColor();
+//        simonButton.startFlash();
+//        simonButton.getFlashColor();
     }
 
     public void mouseReleased(MouseEvent e) {
