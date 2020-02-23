@@ -5,7 +5,7 @@ public class SimonGPButton {
     private final int WIDTH = SimonFrame.WIDTH / 2;
     private final int HEIGHT = SimonFrame.HEIGHT / 2;
 
-    
+
     // save state of flash
     public boolean _flash = false;
 
@@ -51,7 +51,7 @@ public class SimonGPButton {
 
     // Get Button Color
     protected Color getColor() {
-    	
+
         return Color.WHITE; //default, should overwrite in subclass
     }
 
@@ -67,7 +67,7 @@ public class SimonGPButton {
 
     // Get the Flash Color
     public Color getFlashColor() {
-    	System.out.println("brighter green");
+        System.out.println("brighter color");
         return getColor().brighter();
     }
 }

@@ -7,18 +7,21 @@ public class SimonEndPanel extends JPanel implements KeyListener {
     Font titleFont = new Font("Impact", Font.PLAIN, 120);
     Font subtitleFont = new Font("Impact", Font.PLAIN, 40);
     SimonFrame _parent = null;
-    public SimonEndPanel (SimonFrame parent) {
+
+    public SimonEndPanel(SimonFrame parent) {
         _parent = parent;
     }
+
     public void paintComponent(Graphics g) {
         g.setColor(Color.black);
-		g.fillRect(0, 0, 600, 600);
-		g.setColor(Color.WHITE);
-		g.setFont(titleFont);
-		g.drawString("GAME OVER", 30, 300);
-		g.setFont(subtitleFont);
-		g.drawString("Score: ", 250, 400);
+        g.fillRect(0, 0, 600, 600);
+        g.setColor(Color.WHITE);
+        g.setFont(titleFont);
+        g.drawString("GAME OVER", 30, 300);
+        g.setFont(subtitleFont);
+        g.drawString("Score: ", 250, 400);
     }
+
     public void keyTyped(KeyEvent e) {
 
     }

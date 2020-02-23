@@ -1,61 +1,72 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 
-public class SimonGamePanel extends JPanel implements ActionListener, KeyListener {
-
+public class SimonGamePanel extends JPanel implements ActionListener, KeyListener, MouseListener {
 
 
     public final int PANEL_SIZE = SimonFrame.HEIGHT;
-    protected static final int BUTTON_WIDTH = SimonFrame.WIDTH/2;
-    protected static final int BUTTON_HEIGHT = SimonFrame.HEIGHT/2;
+    protected static final int BUTTON_WIDTH = SimonFrame.WIDTH / 2;
+    protected static final int BUTTON_HEIGHT = SimonFrame.HEIGHT / 2;
 
     SimonGPButton _greenButton = new SimonGreenButton();
     SimonGPButton _redButton = new SimonRedButton();
     SimonGPButton _yellowButton = new SimonYellowButton();
     SimonGPButton _blueButton = new SimonBlueButton();
     SimonFrame _parent = null;
-    SimonGPButton simonButton = new SimonGPButton();
     ArrayList<Integer> newPattern;
     SimonPatternManager _patternManager = new SimonPatternManager(this);
-    SimonGamePanel (SimonFrame parent) {
+
+    SimonGamePanel(SimonFrame parent) {
 
     }
     // paint the Game Panel
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         // paint the background
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, PANEL_SIZE, PANEL_SIZE);
-
         // paint the buttons
         _greenButton.paintComponent(g);
         _redButton.paintComponent(g);
         _yellowButton.paintComponent(g);
         _blueButton.paintComponent(g);
     }
+
     Timer timer = new Timer(1000, this);
+
     public void alsoStartGame() {
         newPattern = _patternManager.startNewPattern();
     }
+
     public void flashPattern() {
         for (int i : newPattern) {
             timer.start();
-            if ( i == 0) {
-              _greenButton.startFlash();
-           }
-            // need to create a timer with a task to turn the flash off when the timer is up
-
+            if (i == 0) {
+                _greenButton.startFlash();
+            } else if (i == 1) {
+                _blueButton.startFlash();
+            } else if (i == 2) {
+                _redButton.startFlash();
+            } else if (i == 3) {
+                _yellowButton.startFlash();
+            }
         }
     }
 
-    public void actionPerformed(ActionEvent e) {
+    public void mousePressed(MouseEvent e) {
 
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("timer's up");
+        _greenButton.stopFlash();
+        _blueButton.stopFlash();
+        _redButton.stopFlash();
+        _yellowButton.stopFlash();
+        timer.stop();
+        repaint();
     }
 
     public void keyTyped(KeyEvent e) {
@@ -69,6 +80,23 @@ public class SimonGamePanel extends JPanel implements ActionListener, KeyListene
     }
 
     public void keyReleased(KeyEvent e) {
+
+    }
+
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    public void mouseExited(MouseEvent e) {
 
     }
 }
