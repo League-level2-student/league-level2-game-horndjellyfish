@@ -56,24 +56,45 @@ public class SimonFrame extends JFrame implements MouseListener {
     }
 
     public void mousePressed(MouseEvent e) {
-        System.out.println("clicked");
-        _gamePanel.timer.start();
-        if (e.getX() > 0 && e.getX() <300 && e.getY() > 0 && e.getY() < 290) {
-            _gamePanel._patternManager.userPattern.add(0);
-            _gamePanel._greenButton.startFlash();
-            System.out.println("green button clicked");
-        } else if (e.getX() < 600 && e.getX() > 300 && e.getY() < 600 && e.getY() > 290) {
-            _gamePanel._patternManager.userPattern.add(1);
-            _gamePanel._blueButton.startFlash();
-            System.out.println("blue button clicked");
-        } else if (e.getX() < 600 && e.getX() > 300 && e.getY() > 0 && e.getY() < 300) {
-            _gamePanel._patternManager.userPattern.add(2);
-            _gamePanel._redButton.startFlash();
-            System.out.println("red button clicked");
-        } else if (e.getX() > 0 && e.getX() < 290 && e.getY() < 600 && e.getY() > 290) {
-            _gamePanel._patternManager.userPattern.add(3);
-            _gamePanel._yellowButton.startFlash();
-            System.out.println("yellow button clicked");
+    //_gamePanel.timer.start();
+        try {
+            if (e.getX() > 0 && e.getX() < 300 && e.getY() > 0 && e.getY() < 290) {
+                _gamePanel._patternManager.userPattern.add(0);
+                _gamePanel._greenButton.startFlash();
+                //Thread.sleep(1000);
+                //_gamePanel._greenButton.stopFlash();
+                System.out.println("green button clicked");
+            } else if (e.getX() < 600 && e.getX() > 300 && e.getY() < 600 && e.getY() > 290) {
+                _gamePanel._patternManager.userPattern.add(1);
+                _gamePanel._blueButton.startFlash();
+                //Thread.sleep(1000);
+                //_gamePanel._blueButton.stopFlash();
+                System.out.println("blue button clicked");
+            } else if (e.getX() < 600 && e.getX() > 300 && e.getY() > 0 && e.getY() < 300) {
+                _gamePanel._patternManager.userPattern.add(2);
+                _gamePanel._redButton.startFlash();
+                //Thread.sleep(1000);
+                //_gamePanel._redButton.stopFlash();
+                System.out.println("red button clicked");
+            } else if (e.getX() > 0 && e.getX() < 290 && e.getY() < 600 && e.getY() > 290) {
+                _gamePanel._patternManager.userPattern.add(3);
+                _gamePanel._yellowButton.startFlash();
+                //Thread.sleep(1000);
+                //_gamePanel._yellowButton.stopFlash();
+                System.out.println("yellow button clicked");
+            }
+        } catch (Exception ex) {
+
+        }
+        boolean equal = _gamePanel._patternManager.checkPattern();
+        if (equal) {
+            _gamePanel.score++;
+            _gamePanel._patternManager.addToPattern();
+
+            _gamePanel.flashPattern();
+
+        } else {
+            _layout.next(this.getContentPane());
         }
         repaint();
     }

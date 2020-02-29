@@ -19,7 +19,7 @@ public class SimonEndPanel extends JPanel implements KeyListener {
         g.setFont(titleFont);
         g.drawString("GAME OVER", 30, 300);
         g.setFont(subtitleFont);
-        g.drawString("Score: ", 250, 400);
+        g.drawString("Score: " + _parent._gamePanel.score, 250, 400);
     }
 
     public void keyTyped(KeyEvent e) {

@@ -3,13 +3,13 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class SimonGamePanel extends JPanel implements ActionListener, KeyListener, MouseListener {
+public class SimonGamePanel extends JPanel implements KeyListener, ActionListener, MouseListener {
 
 
     public final int PANEL_SIZE = SimonFrame.HEIGHT;
     protected static final int BUTTON_WIDTH = SimonFrame.WIDTH / 2;
     protected static final int BUTTON_HEIGHT = SimonFrame.HEIGHT / 2;
-
+    public int score = 0;
     SimonGPButton _greenButton = new SimonGreenButton();
     SimonGPButton _redButton = new SimonRedButton();
     SimonGPButton _yellowButton = new SimonYellowButton();
@@ -21,6 +21,7 @@ public class SimonGamePanel extends JPanel implements ActionListener, KeyListene
     SimonGamePanel(SimonFrame parent) {
 
     }
+
     // paint the Game Panel
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -41,17 +42,33 @@ public class SimonGamePanel extends JPanel implements ActionListener, KeyListene
     }
 
     public void flashPattern() {
-        for (int i : newPattern) {
-            timer.start();
-            if (i == 0) {
-                _greenButton.startFlash();
-            } else if (i == 1) {
-                _blueButton.startFlash();
-            } else if (i == 2) {
-                _redButton.startFlash();
-            } else if (i == 3) {
-                _yellowButton.startFlash();
+        timer.start();
+
+        for(int i : _patternManager.compPattern) {
+System.out.println(" for loop " + i );
+            try {
+                if (i == 0) {
+                    _greenButton.startFlash();
+                    //Thread.sleep(1000);
+                    //_greenButton.stopFlash();
+                } else if (i == 1) {
+                    _blueButton.startFlash();
+                    //Thread.sleep(1000);
+                    //_blueButton.stopFlash();
+                } else if (i == 2) {
+                    _redButton.startFlash();
+                    //Thread.sleep(1000);
+                    //redButton.stopFlash();
+                } else if (i == 3) {
+                    _yellowButton.startFlash();
+                    //Thread.sleep(1000);
+                    //_yellowButton.stopFlash();
+
+                }
+            } catch(Exception ex) {
+
             }
+
         }
     }
 
@@ -60,13 +77,14 @@ public class SimonGamePanel extends JPanel implements ActionListener, KeyListene
     }
 
     public void actionPerformed(ActionEvent e) {
-        System.out.println("timer's up");
+        System.out.println("timer's on:" );
         _greenButton.stopFlash();
         _blueButton.stopFlash();
         _redButton.stopFlash();
         _yellowButton.stopFlash();
         timer.stop();
         repaint();
+        System.out.println("timer's off:" );
     }
 
     public void keyTyped(KeyEvent e) {

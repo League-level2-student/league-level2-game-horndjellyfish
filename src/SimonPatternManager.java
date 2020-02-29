@@ -6,6 +6,7 @@ public class SimonPatternManager {
     public final int BLUE = 1;
     public final int RED = 2;
     public final int YELLOW = 3;
+
     SimonGamePanel _parent = null;
     ArrayList<Integer> compPattern;
     ArrayList<Integer> userPattern = new ArrayList<Integer>();
@@ -28,5 +29,15 @@ public class SimonPatternManager {
         int nextColor = rand.nextInt(YELLOW);
         compPattern.add(nextColor);
     }
+    // return if the two arrays are equal or not
+    public boolean checkPattern() {
+        for (int i = 0; i < compPattern.size(); i++) {
+            if (compPattern.get(i) != userPattern.get(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 }
